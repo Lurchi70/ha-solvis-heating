@@ -1,22 +1,25 @@
-# ha-solvis-heating
-Integrate your Solvis heating (e.g. SolvisMax) via solvis remote extension into home assistant
+# HA Multiscrape
 
----
-title: Solvis Heating
-description: Instructions on how to integrate Solvis Heating sensors within Home Assistant.
-ha_category:
-  - Sensor
-ha_release: 0.101
-ha_iot_class: Local Polling
-ha_config_flow: true
-ha_codeowners:
-  - '@Lurchi70'
-ha_domain: solvis_heating
-ha_platforms:
-  - sensor
-ha_integration_type: integration
----
+[![GitHub Release][releases-shield]][releases]
+[![License][license-shield]](LICENSE)
 
+[![pre-commit][pre-commit-shield]][pre-commit]
+[![Black][black-shield]][black]
+
+[![hacs][hacsbadge]][hacs]
+[![Project Maintenance][maintenance-shield]][user_profile]
+
+[![Discord][discord-shield]][discord]
+[![Community Forum][forum-shield]][forum]
+
+## Important note: troubleshooting
+
+If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with a lot of information for continued investigation. `log_response` will write all responses to files. 
+
+If all of this doesn't help, use the home assistant forum. I cannot give everyone personal assistance and please don't create github issues unless you are sure there is a bug.
+Check the [wiki](https://github.com/Lurchi70/ha-solvis-heating/wiki) for help and other details on the functionality of this component.
+
+# HA Solvis Heating custom component
 The `solvis_heating` integration uses the XML datainterface of the solvis remote extension of the heating system. 
 This allows you to get details from your Solvis Heating device and integrate these into your Home Assistant installation.
 
@@ -24,17 +27,26 @@ Before being able to use the integration, you have to own a solvis remote device
 The xml-file is public and can be retrieved via http://<your-device-ip>/sc2_val.xml
 
 When quering this interface your will retrieve a coded string like: 
+```
 <xml>
   <data>
     AA5555AA056B0C31350600120076028A013A018[...]0000000000
   </data>
 </xml>
+```
 the returned payload data has a length of 439 Bytes in an undocumented format. This data will be decoded and depending on the configuration option 
 made available. 
   
-<div class='note warning'>
-To retrieve the xml interface, a username and password must provided.   
-</div>
+![Sample Screenshot for integration into HA](screenshots/screenshot01.png)
+
+## Installation
+
+[![hacs][hacsbadge]][hacs]
+
+- Install manually by copying the files in 'custom_components/solvis_heating' to a new 'custom_components/solvis_heating' directory in HA config directory.
+- Restart HA 
+- in HA Setting - use "Add Integration" and search for Solvis
+- Configure the integration test (ui configuration)
 
 ## Sensors
 The following sensors are available in the data:
