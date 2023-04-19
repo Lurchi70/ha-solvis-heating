@@ -6,7 +6,6 @@
 [![pre-commit][pre-commit-shield]][pre-commit]
 
 [![hacs][hacsbadge]][hacs]
-[![Project Maintenance][maintenance-shield]][user_profile]
 
 ## Important note: troubleshooting
 If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with information for continued investigation. 
@@ -96,7 +95,15 @@ The following binary sensors are available:
 | solar_pump                   | solar pump is active |
 | solar_2_pump                 | second solar pump is active |
 | warm_water_station_pump      | warm water station pump is started |
-  
+
+## Known Issues
+- Translation 
+- Modbus integration as option instead of XML when SC is supporting that 
+- Additional logging (debug / setup / missing components / configuration errors)
+- Reconfigure of component
+- Solvis Brand Icon
+- assisted identification of Solvis Hardware
+
 [commits]: https://github.com/Lurchi70/ha-solvis-heating/commits/main
 [hacs]: https://hacs.xyz
 [hacsbadge]: https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge
