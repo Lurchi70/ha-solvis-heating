@@ -1,0 +1,55 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Das Geräte ist bereits konfiguriert"
+        },
+        "error": {
+            "cannot_connect": "Verbindungsfehler",
+            "invalid_auth": "Ungültige Zugangsdaten",
+            "unknown": "Unerwarteter Fehler"
+        },
+        "step": {
+            "user": {
+                "title": "Verbindungsdaten Solvis Remote und Optionen",
+                "description": "Geben Sie hier die Zugangsdaten (IP-Adresse oder FQDN) der Solvis Remote, sowie die Ausstattungsmerkmale Ihrer Solvis Heizung an.",
+                "data": {
+                    "east_west": "Die Ost-West-Solar Option wird genutzt",
+                    "host": "Solvis Remote Netzwerkadresse",
+                    "oven": "Ein Feststoff-Ofen ist an die Heinzung angeschlossen",
+                    "password": "Solvis Remote Kennwort",
+                    "solar": "Heizung hat Solar Panels angeschlossen",
+                    "update_interval": "Zeitintervall in Sekunden, um die Solvis Remote abzufragen",
+                    "username": "Solvis Remote Benutzername",
+                    "warmwater_station": "Die Warmwasser-Station ist installiert"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "solar_power": {
+                "name": "Solarleistung"
+            }
+        }
+    },
+    "options": {
+        "error": {
+            "invalid_east_west": "Ohne Solar Option kann die Ost-West-Option nicht gewählt werden.",
+            "update_too_fast": "Updateinterval unter 10 Sekunden erzeugt zu viele Daten.",
+            "update_too_slow": "Länger als 60 Sekunden Updateintvall erzeugt keine aussagekräftigen Daten für die Warm-Wasserstation."
+        },
+        "step": {
+            "init": {
+                "data": {
+                    "east_west": "Die Ost-West-Solar Option wird genutzt",
+                    "oven": "Ein Feststoff-Ofen ist an die Heinzung angeschlossen",
+                    "solar": "Heizung hat Solar Panels angeschlossen",
+                    "update_time": "Zeitintervall in Sekunden, um die Solvis Remote abzufragen",
+                    "warmwater_station": "Die Warmwasser-Station ist installiert"
+                },
+                "description": "",
+                "title": "System Konfiguration"
+            }
+        }
+    }
+}
