@@ -4,7 +4,7 @@
   "codeowners": ["@lurchi70"],
   "version": "0.0.1",
   "config_flow": true,
-  "documentation": "https://www.home-assistant.io/integrations/solvis_heating",
+  "documentation": "https://github.com/Lurchi70/ha-solvis-heating",
   "iot_class": "local_polling",
   "requirements": ["sc2xmlreader==0.0.8"]
 }

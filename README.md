@@ -1,57 +1,53 @@
-#  HA Solvis Heating custom component
+#  HA [Solvis](http://www.solvis.de) Heating custom component
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
 
 [![pre-commit][pre-commit-shield]][pre-commit]
-[![Black][black-shield]][black]
 
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-[![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
-
 ## Important note: troubleshooting
-If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with a lot of information for continued investigation. `log_response` will write all responses to files. 
+If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with information for continued investigation. 
 
 If all of this doesn't help, use the home assistant forum. I cannot give everyone personal assistance and please don't create github issues unless you are sure there is a bug.
 Check the [wiki](https://github.com/Lurchi70/ha-solvis-heating/wiki) for help and other details on the functionality of this component.
 
 # Introduction
 The `solvis_heating` custom component uses the XML datainterface of the solvis remote extension of the heating system. 
-This allows you to get details from your Solvis Heating device and integrate these into your Home Assistant installation.
+The [Solvis](http://www.solvis.de) Heating Device is providing a lot of information about its state. To access this information the Heating device must be acessible via a computer network. [Solvis](http://www.solvis.de) provides the solvis remote as an additional device to make the heating available. Beside the officially documented http interface, the remote also provides an xml interface. 
+This allows you to get details from your [Solvis](http://www.solvis.de) Heating device and integrate these into your Home Assistant installation.
 
-Before being able to use the integration, you have to own a solvis remote device and have it attached, configured and available in your network. 
-If you want to test this, you can retrieve the xml is via http://<username>:<password>:<your-device-ip>/sc2_val.xml
+Before being able to use the integration, you have to own a solvis remote device and have it attached, configured and available in your network. The communication with solvice remote and decoding of the returned data is done by the pypi package [sc2xmlreader](https://pypi.org/project/sc2xmlreader/). 
 
-When quering this interface you will retrieve a coded string like: 
-```
-<xml>
-  <data>
-    AA5555AA056B0C31350600120076028A013A018[...]0000000000
-  </data>
-</xml>
-```
-the returned payload data has a length of 439 Bytes in an undocumented format. This data will be decoded and depending on the configuration option made available. 
+## XML interface vs. ModBus Interface
+Since Solvis SC2 Centralcontroller version MA205 (or higher) the data can be retrieved via the ModBus interface (see [Solvis Heizung via Modbus auslesen und steuern](https://github.com/saruter/smarthome/blob/master/docs/projekte/solvis-heizung.md))
 
+If you have an older Centralcontroller version, MODBUS is not available. But the XML Interface is available (currently i don't know sine which version of SC2 - may be someone can tell me)
+
+Due to my own heating system, I could only test the XML interface agains a SolvisMax 6 with Solvis Remote 200. 
+As far as I know, it should be possible to use this against other system as well, as long as there is a Solvis Remote available.
+## Sample integration into HA
 The provided data can be integrated into HA Dashboard. 
-  
+Sample Dashboard for heating overview 
 ![Sample Screenshot for integration into HA](screenshots/screenshot01.png)
 
-![Sample Screenshot for deatils about solar](screenshots/screenshot02.png)
+Sample Dashboard for solar details 
+![Sample Screenshot for details about solar](screenshots/screenshot02.png)
 
 ## Installation
 
 [![hacs][hacsbadge]][hacs]
-- install the pypi package sc2xmlreader at your HA installation (prerequsite)
+- Install the pypi package [sc2xmlreader](https://pypi.org/project/sc2xmlreader/) at your HA installation (prerequsite)
 - Install manually by copying the files in 'custom_components/solvis_heating' to a new 'custom_components/solvis_heating' directory in HA config directory.
 - Restart HA 
 - in HA Setting - use "Add Integration" and search for Solvis
 - Configure the integration test (ui configuration)
+- Configure your dashboard
 
 ## Sensors
-The following sensors are available in the data:
+The following sensors are available:
 
 | name                         | Unit   | Description   |
 |------------------------------|--------|:-------------------------------------------|
@@ -74,7 +70,7 @@ The following sensors are available in the data:
 | volume_warm_water            | l/min  | current volume of fluid stream in warm water station  |
 
 ## Binary Sensors
-The following binary sensors are available in the data:
+The following binary sensors are available:
 
 | name                         | Description   |
 |------------------------------|:-------------------------------------------|
@@ -93,14 +89,11 @@ The following binary sensors are available in the data:
 | solar_2_pump                 | second solar pump is active |
 | warm_water_station_pump      | warm water station pump is started |
   
-<div class='note'>
-The solvis heating integration is using the requests pypi package to get the data from your device. 
-</div>
-
 [commits]: https://github.com/Lurchi70/ha-solvis-heating/commits/main
 [hacs]: https://hacs.xyz
 [hacsbadge]: https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge
-[discord]: https://discord.gg/
+[discord]: https://discord.gg/Qa5fW2R
+[discord-shield]: https://img.shields.io/discord/330944238910963714.svg?style=for-the-badge
 [license-shield]: https://img.shields.io/github/license/Lurchi70/ha-solvis-heating?style=for-the-badge
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge
