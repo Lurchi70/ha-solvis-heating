@@ -21,10 +21,10 @@ This allows you to get details from your [Solvis](http://www.solvis.de) Heating 
 
 Before being able to use the integration, you have to own a solvis remote device and have it attached, configured and available in your network. The communication with solvice remote and decoding of the returned data is done by the pypi package [sc2xmlreader](https://pypi.org/project/sc2xmlreader/). 
 
-## XML interface vs. ModBus Interface
-Since Solvis SC2 Centralcontroller version MA205 (or higher) the data can be retrieved via the ModBus interface (see [Solvis Heizung via Modbus auslesen und steuern](https://github.com/saruter/smarthome/blob/master/docs/projekte/solvis-heizung.md))
+## XML interface vs. MODBUS Interface
+Since Solvis SC2 Centralcontroller version MA205 (or higher) the data can be retrieved via the MODBUS interface (see [Solvis Heizung via Modbus auslesen und steuern](https://github.com/saruter/smarthome/blob/master/docs/projekte/solvis-heizung.md))
 
-If you have an older Centralcontroller version, MODBUS is not available. But the XML Interface is available (currently i don't know sine which version of SC2 - may be someone can tell me)
+If you have an older Centralcontroller version, MODBUS is not available. But the XML Interface is available (currently i don't know since which version of SC2 - may be someone can tell me)
 
 Due to my own heating system, I could only test the XML interface agains a SolvisMax 6 with Solvis Remote 200. 
 As far as I know, it should be possible to use this against other system as well, as long as there is a Solvis Remote available.
@@ -34,15 +34,23 @@ Sample Dashboard for heating overview
 ![Sample Screenshot for integration into HA](screenshots/screenshot01.png)
 
 Sample Dashboard for solar details 
-![Sample Screenshot for details about solar](screenshots/screenshot02.png)
+![Sample Screenshot for details about solar](screenshots/screenshot02.PNG)
 
 ## Installation
 
 [![hacs][hacsbadge]][hacs]
 - Install the pypi package [sc2xmlreader](https://pypi.org/project/sc2xmlreader/) at your HA installation (prerequsite)
 - Install manually by copying the files in 'custom_components/solvis_heating' to a new 'custom_components/solvis_heating' directory in HA config directory.
+- Create 'customize.yaml' in config directory and add 
+```
+sensor.solvis_remote_volume_stream_solar:
+  unit_of_measurement: 'l/h'
+
+sensor.solvis_remote_volume_stream_warm_water:
+  unit_of_measurement: 'l/min'
+``` 
 - Restart HA 
-- in HA Setting - use "Add Integration" and search for Solvis
+- In HA Setting - use "Add Integration" and search for Solvis
 - Configure the integration test (ui configuration)
 - Configure your dashboard
 
