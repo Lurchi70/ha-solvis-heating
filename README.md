@@ -1,4 +1,4 @@
-# HA Multiscrape
+#  HA Solvis Heating custom component
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
@@ -13,20 +13,19 @@
 [![Community Forum][forum-shield]][forum]
 
 ## Important note: troubleshooting
-
 If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with a lot of information for continued investigation. `log_response` will write all responses to files. 
 
 If all of this doesn't help, use the home assistant forum. I cannot give everyone personal assistance and please don't create github issues unless you are sure there is a bug.
 Check the [wiki](https://github.com/Lurchi70/ha-solvis-heating/wiki) for help and other details on the functionality of this component.
 
-# HA Solvis Heating custom component
-The `solvis_heating` integration uses the XML datainterface of the solvis remote extension of the heating system. 
+# Introduction
+The `solvis_heating` custom component uses the XML datainterface of the solvis remote extension of the heating system. 
 This allows you to get details from your Solvis Heating device and integrate these into your Home Assistant installation.
 
 Before being able to use the integration, you have to own a solvis remote device and have it attached, configured and available in your network. 
-The xml-file is public and can be retrieved via http://<your-device-ip>/sc2_val.xml
+If you want to test this, you can retrieve the xml is via http://<username>:<password>:<your-device-ip>/sc2_val.xml
 
-When quering this interface your will retrieve a coded string like: 
+When quering this interface you will retrieve a coded string like: 
 ```
 <xml>
   <data>
@@ -34,15 +33,18 @@ When quering this interface your will retrieve a coded string like:
   </data>
 </xml>
 ```
-the returned payload data has a length of 439 Bytes in an undocumented format. This data will be decoded and depending on the configuration option 
-made available. 
+the returned payload data has a length of 439 Bytes in an undocumented format. This data will be decoded and depending on the configuration option made available. 
+
+The provided data can be integrated into HA Dashboard. 
   
 ![Sample Screenshot for integration into HA](screenshots/screenshot01.png)
+
+![Sample Screenshot for deatils about solar](screenshots/screenshot02.png)
 
 ## Installation
 
 [![hacs][hacsbadge]][hacs]
-
+- install the pypi package sc2xmlreader at your HA installation (prerequsite)
 - Install manually by copying the files in 'custom_components/solvis_heating' to a new 'custom_components/solvis_heating' directory in HA config directory.
 - Restart HA 
 - in HA Setting - use "Add Integration" and search for Solvis
@@ -94,3 +96,14 @@ The following binary sensors are available in the data:
 <div class='note'>
 The solvis heating integration is using the requests pypi package to get the data from your device. 
 </div>
+
+[commits]: https://github.com/Lurchi70/ha-solvis-heating/commits/main
+[hacs]: https://hacs.xyz
+[hacsbadge]: https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge
+[discord]: https://discord.gg/
+[license-shield]: https://img.shields.io/github/license/Lurchi70/ha-solvis-heating?style=for-the-badge
+[pre-commit]: https://github.com/pre-commit/pre-commit
+[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge
+[releases-shield]: https://img.shields.io/github/release/Lurchi70/ha-solvis-heating.svg?style=for-the-badge
+[releases]: https://github.com/Lurchi70/ha-solvis-heating/releases
+[user_profile]: https://github.com/Lurchi70
