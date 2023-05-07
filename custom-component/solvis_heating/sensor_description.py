@@ -90,6 +90,43 @@ SENSOR_TYPES_BASE: tuple[SolvisMaxSensorEntityDescription, ...] = (
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
     ),
+    SolvisMaxSensorEntityDescription(
+        key="runtime_burner",
+        translation_key="runtime_burner",
+        name="runtime burner",
+        native_unit_of_measurement=UnitOfTime.HOURS,
+        device_class=SensorDeviceClass.DURATION,
+        state_class=SensorStateClass.TOTAL,
+    ),
+    SolvisMaxSensorEntityDescription(
+        key="total_burner_start",
+        translation_key="total_burner_start",
+        name="total burner start",
+        state_class=SensorStateClass.TOTAL,
+    ),
+    SolvisMaxSensorEntityDescription(
+        key="total_burner_2nd_start",
+        translation_key="total_burner_2nd_start",
+        name="total burner 2nd start",
+        state_class=SensorStateClass.TOTAL,
+    ),
+    SolvisMaxSensorEntityDescription(
+        key="burner_capacity",
+        name="burner capacity",
+        translation_key="burner_capacity",
+        native_unit_of_measurement=UnitOfPower.KILO_WATT,
+        device_class=SensorDeviceClass.POWER,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    SolvisMaxSensorEntityDescription(
+        key="burner_consumption",
+        name="burner power consumption",
+        translation_key="burner_power_consumption",
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+        device_class=SensorDeviceClass.ENERGY,
+        state_class=SensorStateClass.TOTAL_INCREASING,
+    ),
+
 )
 SENSOR_TYPES_WARMWATER: tuple[SolvisMaxSensorEntityDescription, ...] = (
     SolvisMaxSensorEntityDescription(
@@ -181,7 +218,7 @@ SENSOR_TYPES_SOLAR: tuple[SolvisMaxSensorEntityDescription, ...] = (
         translation_key="solar_yield",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
-        state_class=SensorStateClass.TOTAL,
+        state_class=SensorStateClass.TOTAL_INCREASING,
     ),
     SolvisMaxSensorEntityDescription(
         key="runtime_solar_pump",
