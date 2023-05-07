@@ -5,8 +5,6 @@
 
 [![pre-commit][pre-commit-shield]][pre-commit]
 
-[![hacs][hacsbadge]][hacs]
-
 ## Important note: troubleshooting
 If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with information for continued investigation. 
 
