@@ -5,6 +5,8 @@
 
 [![pre-commit][pre-commit-shield]][pre-commit]
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
 ## Important note: troubleshooting
 If you don't manage to get the data from your heating device, please [enable debug logging](#debug-logging) and `log_response`. This will provide you with information for continued investigation. 
 
