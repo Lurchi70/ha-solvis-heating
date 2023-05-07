@@ -15,6 +15,7 @@ from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 
 from .const import (
+    CONF_OPTION_BURNER_POWER,
     CONF_OPTION_OVEN,
     CONF_OPTION_SOLAR,
     CONF_OPTION_SOLAR_EAST_WEST,
@@ -32,6 +33,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_HOST): str,
         vol.Required(CONF_USERNAME, default=DEFAULT_USERNAME): str,
         vol.Required(CONF_PASSWORD, default=DEFAULT_PASSWORD): str,
+        vol.Required(CONF_OPTION_BURNER_POWER, default=27): int,
         vol.Required(CONF_OPTION_WARMWATER_STATION, default=True): bool,
         vol.Required(CONF_OPTION_SOLAR, default=True): bool,
         vol.Required(CONF_OPTION_SOLAR_EAST_WEST, default=False): bool,

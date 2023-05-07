@@ -11,6 +11,7 @@ from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import entity_registry as er
 
 from .const import (
+    CONF_OPTION_BURNER_POWER,
     CONF_OPTION_OVEN,
     CONF_OPTION_SOLAR,
     CONF_OPTION_SOLAR_EAST_WEST,
@@ -24,6 +25,7 @@ _LOGGER = logging.getLogger(__name__)
 
 STEP_OPTIONS_SCHEMA = vol.Schema(
     {
+        vol.Required(CONF_OPTION_BURNER_POWER, default=27): int,
         vol.Required(CONF_OPTION_WARMWATER_STATION, default=True): bool,
         vol.Required(CONF_OPTION_SOLAR, default=True): bool,
         vol.Required(CONF_OPTION_SOLAR_EAST_WEST, default=False): bool,
@@ -31,7 +33,6 @@ STEP_OPTIONS_SCHEMA = vol.Schema(
         vol.Required(CONF_UPDATE_TIMESPAN, default=10): int,
     }
 )
-
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Handles options flow for the component."""
@@ -55,10 +56,8 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             # Validation and additional processing logic omitted for brevity.
             # ...
             if not errors:
-                # Value of data will be set on the options property of our config_entry
-                # instance.
-                return self.async_create_entry(title=CONF_OPTION_TITEL, data=user_input)
+                return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
-            step_id="init", data_schema=STEP_OPTIONS_SCHEMA, errors=errors
+            step_id="init", data_schema=STEP_OPTIONS_SCHEMA
         )

@@ -13,13 +13,14 @@
                 "title": "Verbindungsdaten Solvis Remote und Optionen",
                 "description": "Geben Sie hier die Zugangsdaten (IP-Adresse oder FQDN) der Solvis Remote, sowie die Ausstattungsmerkmale Ihrer Solvis Heizung an.",
                 "data": {
-                    "east_west": "Die Ost-West-Solar Option wird genutzt",
                     "host": "Solvis Remote Netzwerkadresse",
-                    "oven": "Ein Feststoff-Ofen ist an die Heinzung angeschlossen",
+                    "username": "Solvis Remote Benutzername",
                     "password": "Solvis Remote Kennwort",
+                    "burner_power": "Brennerleistung in kW",
+                    "east_west": "Die Ost-West-Solar Option wird genutzt",
+                    "oven": "Ein Feststoff-Ofen ist an die Heizung angeschlossen",
                     "solar": "Heizung hat Solar Panels angeschlossen",
                     "update_interval": "Zeitintervall in Sekunden, um die Solvis Remote abzufragen",
-                    "username": "Solvis Remote Benutzername",
                     "warmwater_station": "Die Warmwasser-Station ist installiert"
                 }
             }
@@ -41,6 +42,7 @@
         "step": {
             "init": {
                 "data": {
+                    "burner_power": "Brennerleistung in kW",
                     "east_west": "Die Ost-West-Solar Option wird genutzt",
                     "oven": "Ein Feststoff-Ofen ist an die Heinzung angeschlossen",
                     "solar": "Heizung hat Solar Panels angeschlossen",

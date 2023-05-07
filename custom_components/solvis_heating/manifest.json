@@ -2,7 +2,7 @@
   "domain": "solvis_heating",
   "name": "Solvis Heating",
   "codeowners": ["@lurchi70"],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "config_flow": true,
   "documentation": "https://github.com/Lurchi70/ha-solvis-heating",
   "iot_class": "local_polling",

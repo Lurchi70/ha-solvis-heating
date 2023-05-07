@@ -10,6 +10,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import update_coordinator
 
 from .const import (
+    CONF_OPTION_BURNER_POWER,
     CONF_OPTION_OVEN,
     CONF_OPTION_SOLAR,
     CONF_OPTION_SOLAR_EAST_WEST,
@@ -44,6 +45,10 @@ class SolvisRemoteCoordinator(update_coordinator.DataUpdateCoordinator):
         self.solar = entry.data[CONF_OPTION_SOLAR]
         self.solar_east_west = entry.data[CONF_OPTION_SOLAR_EAST_WEST]
         self.oven = entry.data[CONF_OPTION_OVEN]
+        try:
+            self.burner_power = entry.data[CONF_OPTION_BURNER_POWER]
+        except:
+            self.burner_power = 27
 
         update_ = entry.data[CONF_UPDATE_TIMESPAN]
         if 10 >= update_ <= 300:
@@ -67,6 +72,7 @@ class SolvisRemoteCoordinator(update_coordinator.DataUpdateCoordinator):
                 self.solar,
                 self.solar_east_west,
                 self.oven,
+                self.burner_power
             )
         except BaseException as err:
             raise update_coordinator.UpdateFailed(err)
