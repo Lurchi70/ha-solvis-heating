@@ -35,6 +35,13 @@ Sample Dashboard for heating overview
 Sample Dashboard for solar details 
 ![Sample Screenshot for details about solar](screenshots/screenshot02.PNG)
 
+## integration into Energy Dashboard
+Burner consumption and solar yield are also available in the energy dashboard (unfortunately und the label of "gas consumption" ...)
+To add the values, just add "burner consumption" and "solar yield" to the dashboard:
+![Sample Screenshot in "Edit Enery Dashboard"](screenshots/edit_energy_dashboard.PNG)
+
+...and the values will be part of the enery dashboard:
+![Sample Screenshot for integration into HA](screenshots/energy_dashboard.PNG)
 ## Installation
 
 [![hacs][hacsbadge]][hacs]
